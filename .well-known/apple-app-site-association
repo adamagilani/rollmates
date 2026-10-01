@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["KW6UH4ZYP7.com.adamgilani.rollmates"],
+        "components": [
+          { "/": "/add/*", "comment": "Invites to be mates" },
+          { "/": "/film/*", "comment": "Films" },
+          { "/": "/roll/*", "comment": "Shared rolls" }
+        ]
+      }
+    ]
+  }
+}
