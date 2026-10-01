@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RollMates</title>
+<meta property="og:title" content="RollMates">
+<meta property="og:description" content="A film look on RollMates.">
+<style>
+  :root { --bg:#fff; --text:#111; --muted:#5f5f5f; --surface:#f3f3f1; --accent:#FAB711; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0b0b0b; --text:#f2f2f2; --muted:#a3a3a3; --surface:#1a1a1a; } }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--text);
+         font:17px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  main { width:100%; max-width:420px; padding:32px 20px; text-align:center; }
+  .mark { width:64px; height:64px; border-radius:16px; background:var(--accent); margin:0 auto 20px; display:flex; align-items:center; justify-content:center;
+          font-weight:900; font-size:26px; color:#111; letter-spacing:-1px; }
+  h1 { font-size:28px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  p { color:var(--muted); margin:0 0 28px; }
+  a.button { display:block; padding:16px; border-radius:999px; font-weight:700; text-decoration:none; margin-bottom:12px; }
+  #open { background:var(--accent); color:#111; }
+  #get { background:var(--surface); color:var(--text); }
+  small { color:var(--muted); display:block; margin-top:18px; font-size:13px; }
+</style>
+</head>
+<body data-kind="film">
+<main>
+  <div class="mark">rm</div>
+  <h1 id="title">RollMates</h1>
+  <p id="line"></p>
+  <a class="button" id="open" href="#">Open in RollMates</a>
+  <a class="button" id="get" href="#">Get RollMates</a>
+  <small>RollMates is in beta on TestFlight for iPhone.</small>
+</main>
+<script src="../link.js"></script>
+</body>
+</html>
