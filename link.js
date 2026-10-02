@@ -23,6 +23,19 @@
   document.getElementById("title").textContent = title;
   document.getElementById("line").textContent = line;
   var open = document.getElementById("open");
-  if (app) { open.href = app; setTimeout(function () { location.href = app; }, 300); } else { open.style.display = "none"; }
-  document.getElementById("get").href = TESTFLIGHT;
+  // With RollMates installed, these links open the app directly (universal links), so no automatic jump here:
+  // without the app, Safari would show an error.
+  if (app) { open.href = app; } else { open.style.display = "none"; }
+  var get = document.getElementById("get");
+  get.href = TESTFLIGHT;
+  // Installing loses the link, so "Get RollMates" copies it first; the app offers to paste it after install.
+  if (user && (kind === "add" || kind === "roll")) {
+    var note = document.querySelector("small");
+    if (note) note.textContent = "Get RollMates copies this invite. After installing, open RollMates and tap Paste Invite to add @" + user + ".";
+    get.addEventListener("click", function (event) {
+      if (!navigator.clipboard) return;
+      event.preventDefault();
+      navigator.clipboard.writeText(location.href).catch(function () {}).then(function () { location.href = TESTFLIGHT; });
+    });
+  }
 })();
