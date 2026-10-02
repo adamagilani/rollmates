@@ -22,11 +22,21 @@
   #open { background:var(--accent); color:#111; }
   #get { background:var(--surface); color:var(--text); }
   small { color:var(--muted); display:block; margin-top:18px; font-size:13px; }
+  .preview { display:none; width:min(100%, 36vh); margin:0 auto 22px; border-radius:22px; overflow:hidden; background:var(--surface);
+             box-shadow:0 14px 40px rgba(0,0,0,.18); }
+  .preview img { display:block; width:100%; height:auto; }
+  .owner { display:none; align-items:center; justify-content:center; gap:10px; margin:0 0 6px; color:var(--muted); font-size:15px; }
+  .owner img { width:28px; height:28px; border-radius:50%; object-fit:cover; background:var(--surface); }
+  body.has-preview .mark { display:none; }
+  body.has-preview .preview, body.has-preview .owner { display:block; }
+  body.has-preview .owner { display:flex; }
 </style>
 </head>
 <body data-kind="roll">
 <main>
   <img class="mark" src="../logo.png" alt="RollMates">
+  <div class="preview"><img id="preview" alt=""></div>
+  <div class="owner"><img id="avatar" alt=""><span id="owner"></span></div>
   <h1 id="title">RollMates</h1>
   <p id="line"></p>
   <a class="button" id="open" href="#">Open in RollMates</a>
