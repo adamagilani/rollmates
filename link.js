@@ -28,6 +28,33 @@
   if (app) { open.href = app; } else { open.style.display = "none"; }
   var get = document.getElementById("get");
   get.href = TESTFLIGHT;
+
+  // A roll whose owner turned on the link preview: its cover and a blurred peek, plus who shared it.
+  if (kind === "roll" && id && window.fetch) {
+    var SUPABASE = "https://tbmfloomiobgilafksly.supabase.co";
+    var KEY = "sb_publishable_Ak9_i1AEe511JlgyhdfpKg_koEEd5Ya";
+    fetch(SUPABASE + "/rest/v1/rpc/roll_preview", {
+      method: "POST",
+      headers: { "apikey": KEY, "Content-Type": "application/json" },
+      body: JSON.stringify({ roll: id.toLowerCase() })
+    }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
+      var roll = rows && rows[0];
+      if (!roll || !roll.preview_path) return;
+      var img = document.getElementById("preview");
+      img.alt = roll.title;
+      img.onload = function () { document.body.classList.add("has-preview"); };
+      img.src = SUPABASE + "/storage/v1/object/public/previews/" + roll.preview_path;
+      var name = roll.display_name || ("@" + roll.username);
+      document.getElementById("owner").textContent = name + " shared a roll";
+      var avatar = document.getElementById("avatar");
+      if (roll.avatar_path) { avatar.src = SUPABASE + "/storage/v1/object/public/avatars/" + roll.avatar_path; }
+      else { avatar.style.display = "none"; }
+      document.getElementById("title").textContent = roll.title;
+      var count = roll.photo_count + (roll.photo_count === 1 ? " photo" : " photos");
+      document.getElementById("line").textContent = count + " on " + roll.film + ". Only " + name
+        + "'s mates can see them, so add them in RollMates.";
+    }).catch(function () {});
+  }
   // Installing loses the link, so "Get RollMates" copies it first; the app offers to paste it after install.
   if (user && (kind === "add" || kind === "roll")) {
     var note = document.querySelector("small");
