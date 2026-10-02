@@ -1,6 +1,9 @@
 // Shared by the RollMates link pages: opens the app if it's installed, otherwise offers to get it.
 (function () {
   var TESTFLIGHT = "https://testflight.apple.com/join/esFUVYCp";
+  var APP_STORE = "https://apps.apple.com/app/id6817925230";
+  // TestFlight until RollMates is on the App Store; switches by itself once Apple lists it (see below).
+  var store = TESTFLIGHT;
   var params = new URLSearchParams(location.search);
   var clean = function (v, re) { return v && re.test(v) ? v : null; };
   var kind = document.body.dataset.kind;
@@ -27,7 +30,19 @@
   // without the app, Safari would show an error.
   if (app) { open.href = app; } else { open.style.display = "none"; }
   var get = document.getElementById("get");
-  get.href = TESTFLIGHT;
+  get.href = store;
+  var note = document.querySelector("small");
+
+  // Once RollMates is live, Apple's lookup finds it: send people to the App Store instead of TestFlight.
+  window.rollmatesLookup = function (data) {
+    if (!data || !data.resultCount) return;
+    store = APP_STORE;
+    get.href = store;
+    if (note && !note.dataset.invite) note.textContent = "Free on the App Store for iPhone.";
+  };
+  var lookup = document.createElement("script");
+  lookup.src = "https://itunes.apple.com/lookup?id=6817925230&callback=rollmatesLookup";
+  document.head.appendChild(lookup);
 
   // A roll whose owner turned on the link preview: its cover and a blurred peek, plus who shared it.
   if (kind === "roll" && id && window.fetch) {
@@ -57,12 +72,12 @@
   }
   // Installing loses the link, so "Get RollMates" copies it first; the app offers to paste it after install.
   if (user && (kind === "add" || kind === "roll")) {
-    var note = document.querySelector("small");
+    if (note) note.dataset.invite = "1";
     if (note) note.textContent = "Get RollMates copies this invite. After installing, open RollMates and tap Paste Invite to add @" + user + ".";
     get.addEventListener("click", function (event) {
       if (!navigator.clipboard) return;
       event.preventDefault();
-      navigator.clipboard.writeText(location.href).catch(function () {}).then(function () { location.href = TESTFLIGHT; });
+      navigator.clipboard.writeText(location.href).catch(function () {}).then(function () { location.href = store; });
     });
   }
 })();
