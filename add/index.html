@@ -3,52 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <title>RollMates</title>
 <meta property="og:title" content="RollMates">
-<meta property="og:image" content="https://rollmates.adamgilani.com/shots/og.jpg">
+<meta property="og:image" content="https://rollmates.adamgilani.com/logo.png">
 <meta property="og:description" content="Add me as a mate on RollMates.">
 <style>
-  :root { --bg:#fff; --text:#111; --muted:#5f5f5f; --surface:#f3f3f1; --accent:#FAB711; --line:#e4e4e1; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0b0b0b; --text:#f2f2f2; --muted:#a3a3a3; --surface:#1a1a1a; --line:#2a2a2a; } }
+  :root { --bg:#fff; --text:#111; --muted:#5f5f5f; --surface:#f3f3f1; --accent:#FAB711; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0b0b0b; --text:#f2f2f2; --muted:#a3a3a3; --surface:#1a1a1a; } }
   body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--bg); color:var(--text);
          font:17px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
   main { width:100%; max-width:420px; padding:32px 20px; text-align:center; }
-  .mark { width:64px; height:64px; border-radius:16px; background:var(--accent); margin:0 auto 20px; display:flex; align-items:center; justify-content:center;
-          font-weight:900; font-size:26px; color:#111; letter-spacing:-1px; }
+  .mark { width:72px; height:72px; border-radius:17px; display:block; margin:0 auto 20px; }
   h1 { font-size:28px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
   p { color:var(--muted); margin:0 0 28px; }
   a.button { display:block; padding:16px; border-radius:999px; font-weight:700; text-decoration:none; margin-bottom:12px; }
   #open { background:var(--accent); color:#111; }
   #get { background:var(--surface); color:var(--text); }
   small { color:var(--muted); display:block; margin-top:18px; font-size:13px; }
-  .shots { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; margin:32px -20px 0; padding:0 20px 8px;
-           scrollbar-width:none; -webkit-overflow-scrolling:touch; }
-  .shots::-webkit-scrollbar { display:none; }
-  figure { flex:0 0 62%; max-width:240px; margin:0; scroll-snap-align:center; }
-  figure img { width:100%; aspect-ratio:1206/2622; display:block; border-radius:22px; border:1px solid var(--line);
-               background:var(--surface); }
-  figcaption { font-size:13px; font-weight:600; color:var(--muted); margin-top:8px; }
-  @media (min-width:700px) { main { max-width:1000px; } .intro { max-width:420px; margin:0 auto; }
-                             .shots { justify-content:center; overflow:visible; margin:40px 0 0; padding:0; }
-                             figure { flex:1 1 0; } }
 </style>
 </head>
 <body data-kind="add">
 <main>
-  <div class="intro">
-  <div class="mark">rm</div>
+  <img class="mark" src="../logo.png" alt="RollMates">
   <h1 id="title">RollMates</h1>
   <p id="line"></p>
   <a class="button" id="open" href="#">Open in RollMates</a>
   <a class="button" id="get" href="#">Get RollMates</a>
   <small>RollMates is in beta on TestFlight for iPhone.</small>
-  </div>
-  <div class="shots" aria-label="Screenshots of RollMates">
-    <figure><img src="../shots/1.jpg" alt="Choosing a film for a roll" loading="lazy"><figcaption>Pick a film</figcaption></figure>
-    <figure><img src="../shots/2.jpg" alt="A developed roll of photos" loading="lazy"><figcaption>Develop the roll</figcaption></figure>
-    <figure><img src="../shots/3.jpg" alt="A photo developed on film" loading="lazy"><figcaption>Every frame, like film</figcaption></figure>
-    <figure><img src="../shots/4.jpg" alt="The film library" loading="lazy"><figcaption>Find and build films</figcaption></figure>
-  </div>
 </main>
 <script src="../link.js"></script>
 </body>
