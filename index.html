@@ -91,6 +91,11 @@
   .films button:hover { border-color:#45413b; }
   .films button:active { transform:scale(0.97); }
   .films button[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#111; }
+  .films .divider { width:1px; align-self:stretch; margin:4px 6px; background:var(--line); }
+  .films .yours { display:inline-flex; align-items:center; gap:6px; background:transparent; border-style:dashed; border-color:#4a463f; }
+  .films .yours svg { width:14px; height:14px; fill:currentColor; }
+  .films .yours[aria-pressed="true"] { border-style:solid; }
+  .own { color:var(--muted); font-size:15px; max-width:460px; margin:18px auto 0; }
 
   .final { text-align:center; padding:150px 0 110px; }
   .final h2 { font-size:clamp(34px, 5vw, 52px); letter-spacing:-0.035em; line-height:1.04; margin:0 0 28px; font-weight:760; }
@@ -129,6 +134,7 @@
     .screen { border-radius:34px; }
     .step .n { margin-top:30px; }
     .looks { padding-top:110px; }
+    .films .divider { display:none; }
     .final { padding:120px 0 90px; }
   }
 </style>
@@ -164,10 +170,10 @@
       <p>Bring your photos in from your SD card. Every shoot becomes a roll.</p>
     </div>
     <div class="step">
-      <div class="screen"><img src="img/app/edit.webp" width="660" height="1353" fetchpriority="high" alt="Editing a photo of longtail boats in RollMates"></div>
+      <div class="screen"><img src="img/app/films.webp" width="660" height="1353" fetchpriority="high" alt="Choosing a film for a roll in RollMates: nine photos from Railay shown in Pastel 400, with Glow 800 and Vista 250 beside it"></div>
       <span class="n">02</span>
       <h2>Edit</h2>
-      <p>Develop the whole roll in a film look, then perfect any shot.</p>
+      <p>Pick a film and the whole roll develops in it. Then perfect any shot.</p>
     </div>
     <div class="step">
       <div class="screen"><img src="img/app/roll.webp" width="660" height="1353" alt="A roll in RollMates, Tiger Cave &amp; Railay, shared with mates"></div>
@@ -179,8 +185,8 @@
 
   <section class="looks">
     <div class="reveal">
-      <h2>Film looks, made for real cameras.</h2>
-      <p class="sub">Drag to compare. Tap a film to try it.</p>
+      <h2>A film engine, not a filter.</h2>
+      <p class="sub">Color, grain and glow modeled on real film, developed from your camera's own files.</p>
     </div>
     <div class="compare reveal" id="compare">
       <img src="img/look-before.webp" width="1600" height="1067" loading="lazy" alt="A portrait in the hills of Ha Giang, straight from the camera">
@@ -195,9 +201,11 @@
       <button data-film="cinestill-400d" aria-pressed="false">Daylight 400</button>
       <button data-film="portra-400" aria-pressed="false">Pastel 400</button>
       <button data-film="cinestill-800t-c" aria-pressed="false">Glow 800</button>
-      <button data-film="ultra-400" aria-pressed="false">Ultra 400</button>
       <button data-film="le-100" aria-pressed="false">Vivid 100</button>
+      <span class="divider" aria-hidden="true"></span>
+      <button class="yours" data-film="preset" data-tag="Your Lightroom preset" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.1 5.4 5.4 2.1-5.4 2.1L12 18.5l-2.1-5.4L4.5 11l5.4-2.1z"/></svg>Your presets</button>
     </div>
+    <p class="own">Make your own film in the Film Lab, or bring the Lightroom presets you already love and use them right away.</p>
   </section>
 
   <div class="final reveal">
@@ -279,7 +287,7 @@
         after.classList.add("incoming");
         setTimeout(function () {
           after.src = src;
-          tag.textContent = button.textContent;
+          tag.textContent = button.dataset.tag || button.textContent;
           after.classList.remove("incoming");
         }, 180);
       });
