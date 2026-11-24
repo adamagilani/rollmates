@@ -11,7 +11,7 @@
 <meta name="description" content="Import straight from your SD card, develop the whole roll in a film look, and share it with your mates. Free for iPhone.">
 <meta property="og:title" content="RollMates · Your camera's photos, developed like film">
 <meta property="og:description" content="Import straight from your SD card, develop the whole roll in a film look, and share it with your mates. Free for iPhone.">
-<meta property="og:image" content="https://rollmates.adamgilani.com/img/hero-cinestill-400d.jpg">
+<meta property="og:image" content="https://rollmates.adamgilani.com/img/rolls/hagiang-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <style>
   :root { --bg:#0b0b0b; --text:#f2f2f2; --muted:#a3a3a3; --surface:#171717; --line:#262626; --accent:#FAB711; }
@@ -81,6 +81,19 @@
   .gallery img { width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:14px; }
   .gallery figcaption { color:var(--muted); font-size:14px; margin-top:8px; }
 
+  .rolls { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:16px; }
+  .roll { background:var(--surface); border:1px solid var(--line); border-radius:22px; overflow:hidden; }
+  .roll .cover { position:relative; aspect-ratio:4/3; }
+  .roll .cover img { width:100%; height:100%; object-fit:cover; }
+  .roll .cover::after { content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0) 55%); }
+  .roll .title { position:absolute; left:18px; right:18px; bottom:14px; z-index:1; }
+  .roll .title strong { display:block; font-size:22px; line-height:1.15; letter-spacing:-0.01em; color:#fff; }
+  .roll .title span { font-size:14px; color:rgba(255,255,255,0.8); }
+  .roll .frames { display:grid; grid-template-columns:repeat(6, 1fr); gap:4px; padding:4px; }
+  .roll .frames img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px; }
+  .roll .place { padding:4px 18px 16px; color:var(--muted); font-size:14px; display:flex; align-items:center; gap:6px; }
+  .roll .place svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; }
+
   .final { text-align:center; padding:84px 0 72px; }
   .final h2 { margin-bottom:22px; }
 
@@ -112,16 +125,16 @@
 
   <div class="compare" id="compare">
     <img src="img/hero-before.jpg" alt="The photo straight from the camera">
-    <img class="after" id="after" src="img/hero-cinestill-400d.jpg" alt="The same photo developed in RollMates">
+    <img class="after" id="after" src="img/hero-vista-250.jpg" alt="The same photo developed in RollMates">
     <div class="handle" id="handle"></div>
     <span class="tag left">Before</span>
-    <span class="tag right" id="filmTag">Daylight 400</span>
+    <span class="tag right" id="filmTag">Vista 250</span>
     <input type="range" min="0" max="100" value="50" id="slider" aria-label="Drag to compare before and after">
   </div>
   <div class="films" id="films" role="group" aria-label="Try a film">
-    <button data-film="cinestill-400d" aria-pressed="true">Daylight 400</button>
+    <button data-film="vista-250" aria-pressed="true">Vista 250</button>
+    <button data-film="cinestill-400d" aria-pressed="false">Daylight 400</button>
     <button data-film="portra-400" aria-pressed="false">Pastel 400</button>
-    <button data-film="vista-250" aria-pressed="false">Vista 250</button>
     <button data-film="cinestill-800t-c" aria-pressed="false">Glow 800</button>
     <button data-film="ultra-400" aria-pressed="false">Ultra 400</button>
     <button data-film="le-100" aria-pressed="false">Vivid 100</button>
@@ -135,6 +148,28 @@
       <div class="step"><div class="num">1</div><h3>Import your shots</h3><p>Straight from your camera's SD card, or your Camera Roll.</p></div>
       <div class="step"><div class="num">2</div><h3>Pick a film</h3><p>One look for the whole roll, so it feels like a real roll of film.</p></div>
       <div class="step"><div class="num">3</div><h3>Keep it or share it</h3><p>Your roll stays on your phone until you share it with your mates.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rolls, not single photos</h2>
+    <p class="sub">A day or a trip, developed in one film and shared as a set. A few real rolls made in RollMates:</p>
+    <div class="rolls">
+      <article class="roll">
+        <div class="cover"><img src="img/rolls/hagiang-cover.jpg" alt="A turquoise river between canyon walls, with rafts at a dock" loading="lazy"><div class="title"><strong>Ha Giang Day 2</strong><span>Vista 250 · 59 photos</span></div></div>
+        <div class="frames"><img src="img/rolls/hagiang-1.jpg" alt="" loading="lazy"><img src="img/rolls/hagiang-2.jpg" alt="" loading="lazy"><img src="img/rolls/hagiang-3.jpg" alt="" loading="lazy"><img src="img/rolls/hagiang-4.jpg" alt="" loading="lazy"><img src="img/rolls/hagiang-5.jpg" alt="" loading="lazy"><img src="img/rolls/hagiang-6.jpg" alt="" loading="lazy"></div>
+        <div class="place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Dong Van, Vietnam</div>
+      </article>
+      <article class="roll">
+        <div class="cover"><img src="img/rolls/railay-cover.jpg" alt="Limestone cliffs over a beach lined with longtail boats" loading="lazy"><div class="title"><strong>Tiger Cave &amp; Railay</strong><span>Ultra 400 · 34 photos</span></div></div>
+        <div class="frames"><img src="img/rolls/railay-1.jpg" alt="" loading="lazy"><img src="img/rolls/railay-2.jpg" alt="" loading="lazy"><img src="img/rolls/railay-3.jpg" alt="" loading="lazy"><img src="img/rolls/railay-4.jpg" alt="" loading="lazy"><img src="img/rolls/railay-5.jpg" alt="" loading="lazy"><img src="img/rolls/railay-6.jpg" alt="" loading="lazy"></div>
+        <div class="place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Railay Beach, Thailand</div>
+      </article>
+      <article class="roll">
+        <div class="cover"><img src="img/rolls/laguna-cover.jpg" alt="Palm trees above a cove on the California coast" loading="lazy"><div class="title"><strong>Laguna in October</strong><span>Vista 250 · 18 photos</span></div></div>
+        <div class="frames"><img src="img/rolls/laguna-1.jpg" alt="" loading="lazy"><img src="img/rolls/laguna-2.jpg" alt="" loading="lazy"><img src="img/rolls/laguna-3.jpg" alt="" loading="lazy"><img src="img/rolls/laguna-4.jpg" alt="" loading="lazy"><img src="img/rolls/laguna-5.jpg" alt="" loading="lazy"><img src="img/rolls/laguna-6.jpg" alt="" loading="lazy"></div>
+        <div class="place"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Laguna Beach, California</div>
+      </article>
     </div>
   </section>
 
@@ -162,17 +197,6 @@
         <h3>Story-ready</h3>
         <p>Turn a few frames into one Instagram Story, laid out cleanly on black, white or edge to edge.</p>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Shot on a camera, developed in RollMates</h2>
-    <p class="sub">Every photo here started as a plain camera file.</p>
-    <div class="gallery">
-      <figure><img src="img/cafe.jpg" alt="Beach café tables by the sea" loading="lazy"><figcaption>Pastel 400</figcaption></figure>
-      <figure><img src="img/cliff.jpg" alt="A limestone cliff framed by trees" loading="lazy"><figcaption>Vista 250</figcaption></figure>
-      <figure><img src="img/mangrove.jpg" alt="Longtail boats among mangroves" loading="lazy"><figcaption>Daylight 400</figcaption></figure>
-      <figure><img src="img/valley.jpg" alt="A cat at a viewpoint over a green valley" loading="lazy"><figcaption>Glow 800</figcaption></figure>
     </div>
   </section>
 
