@@ -91,11 +91,8 @@
   .films button:hover { border-color:#45413b; }
   .films button:active { transform:scale(0.97); }
   .films button[aria-pressed="true"] { background:var(--accent); border-color:var(--accent); color:#111; }
-  .films .divider { width:1px; align-self:stretch; margin:4px 6px; background:var(--line); }
-  .films .yours { display:inline-flex; align-items:center; gap:6px; background:transparent; border-style:dashed; border-color:#4a463f; }
-  .films .yours svg { width:14px; height:14px; fill:currentColor; }
-  .films .yours[aria-pressed="true"] { border-style:solid; }
-  .own { color:var(--muted); font-size:15px; max-width:460px; margin:18px auto 0; }
+  .own { text-align:center; color:var(--muted); font-size:15px; max-width:440px; margin:22px auto 0; }
+  .own svg { display:inline-block; width:14px; height:14px; margin-right:7px; vertical-align:-1px; fill:var(--accent); }
 
   .final { text-align:center; padding:150px 0 110px; }
   .final h2 { font-size:clamp(34px, 5vw, 52px); letter-spacing:-0.035em; line-height:1.04; margin:0 0 28px; font-weight:760; }
@@ -134,7 +131,6 @@
     .screen { border-radius:34px; }
     .step .n { margin-top:30px; }
     .looks { padding-top:110px; }
-    .films .divider { display:none; }
     .final { padding:120px 0 90px; }
   }
 </style>
@@ -185,8 +181,8 @@
 
   <section class="looks">
     <div class="reveal">
-      <h2>A film engine, not a filter.</h2>
-      <p class="sub">Color, grain and glow modeled on real film, developed from your camera's own files.</p>
+      <h2>Film emulation, taken seriously.</h2>
+      <p class="sub">Color, grain and halation, each tuned to match real film.</p>
     </div>
     <div class="compare reveal" id="compare">
       <img src="img/look-before.webp" width="1600" height="1067" loading="lazy" alt="A portrait in the hills of Ha Giang, straight from the camera">
@@ -202,10 +198,8 @@
       <button data-film="portra-400" aria-pressed="false">Pastel 400</button>
       <button data-film="cinestill-800t-c" aria-pressed="false">Glow 800</button>
       <button data-film="le-100" aria-pressed="false">Vivid 100</button>
-      <span class="divider" aria-hidden="true"></span>
-      <button class="yours" data-film="preset" data-tag="Your Lightroom preset" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.1 5.4 5.4 2.1-5.4 2.1L12 18.5l-2.1-5.4L4.5 11l5.4-2.1z"/></svg>Your presets</button>
     </div>
-    <p class="own">Make your own film in the Film Lab, or bring the Lightroom presets you already love and use them right away.</p>
+    <p class="own"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.1 5.4 5.4 2.1-5.4 2.1L12 18.5l-2.1-5.4L4.5 11l5.4-2.1z"/></svg><span>Or make your own film, and bring in the Lightroom presets you already love.</span></p>
   </section>
 
   <div class="final reveal">
@@ -287,7 +281,7 @@
         after.classList.add("incoming");
         setTimeout(function () {
           after.src = src;
-          tag.textContent = button.dataset.tag || button.textContent;
+          tag.textContent = button.textContent;
           after.classList.remove("incoming");
         }, 180);
       });
